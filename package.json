@@ -1,6 +1,6 @@
 {
   "name": "btc-converter-ims",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A CLI to convert Bitcon to any currency provided",
   "main": "main.js",
   "scripts": {
@@ -56,5 +56,7 @@
     "nyc": "^11.4.1",
     "rimraf": "^2.6.2"
   },
-  "dependencies": {}
+  "dependencies": {
+    "commander": "^2.12.2"
+  }
 }
