@@ -1,48 +1,70 @@
-describe('Main', function(){
+import { expect } from 'chai';
 
-  describe('Method A', function(){
-    context('Case 1', function(){
-      before(function(){
-        console.log('This part is executed before everything else on case 1.');
-      });
-
-      it('should return 4', function(){
-        console.log(4);
-      });
-
-      after(function(){
-        console.log('This part is executed after everything else on case 2.');
-      });
-    });
+describe('Main', () => {
+  it('should ', () => {
+    expect(true).to.be.true;
   });
-
-  describe('Method B', function(){
-    context('Case 2', function(){
-      before(function(){
-        console.log('This part is executed before everything else on case 2.');
-      });
-
-      beforeEach(function(){
-        console.log('This part is executed before every "it" block on case 2');
-      });
-
-      afterEach(function(){
-        console.log('This part is executed after every "it" block on case 2');
-      });
-
-      it('should return houheue', function(){
-        console.log('houheue');
-      });
-      //"skip" jumps the test
-      it.skip('should fail', function(){
-        throw new Error('errorrrr');
-      });
-    });
-    context('Case 3', function(){
-      console.log('This part is executed before everything else on case 3.');
-      it('should return hoho', function(){
-        console.log('hoho');
-      });
-    });
+  it('should', () => {
+    expect(false).to.be.false;
   });
 });
+{
+  "name": "btc-converter-ims",
+  "version": "1.0.0",
+  "description": "A CLI to convert Bitcon to any currency provided",
+  "main": "main.js",
+  "scripts": {
+    "clear": "rimraf bin",
+    "build": "npm run clear && ./node_modules/.bin/babel --out-dir bin src",
+    "build:watch": "npm run build -- --watch",
+    "lint": "./node_modules/.bin/eslint src/*js",
+    "prepush": "npm run lint && npm run test:coverage",
+    "test": "./node_modules/.bin/mocha tests/**/*.spec.js --require babel-register --reporter nyan",
+    "test:tdd": "npm run test -- --watch",
+    "test:coverage": "nyc npm test"
+  },
+  "preferGlobal": true,
+  "bin": {
+    "btc-converter-ims": "bin/main.js"
+  },
+  "nyc": {
+    "functions": 80,
+    "lines": 80,
+    "check-coverage": false,
+    "reporter": [
+      "text",
+      "html"
+    ],
+    "exclude": [
+      "tests/**"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/havok1305/btc-converter-ims.git"
+  },
+  "keywords": [
+    "js",
+    "tdd"
+  ],
+  "author": "Igor Martins <havok1305@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/havok1305/btc-converter-ims/issues"
+  },
+  "homepage": "https://github.com/havok1305/curso-js-tdd#readme",
+  "devDependencies": {
+    "babel-preset-env": "^1.6.1",
+    "babel-register": "^6.26.0",
+    "chai": "^4.1.2",
+    "eslint": "^4.13.1",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "husky": "^0.14.3",
+    "mocha": "^4.0.1",
+    "nyc": "^11.4.1"
+  },
+  "dependencies": {
+    "ramda": "^0.25.0"
+  }
+}
